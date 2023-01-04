@@ -2,7 +2,7 @@
     <string name="app_name">Vibrant Hive</string>
     <string name="your_phone">Your Phone!</string>
     <string name="phone_number">Phone number</string>
-    <string name="country_code">+91</string>
+    <string name="country_code">+91 - </string>
     <string name="enter_number">Enter Number</string>
     <string name="get_otp">GET OTP</string>
     <!-- Strings used for fragments for navigation -->

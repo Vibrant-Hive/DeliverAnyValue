@@ -35,6 +35,10 @@
             android:textColor="@color/black"
             android:textSize="16sp" />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="12dp" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -55,7 +59,7 @@
                 android:ems="10"
                 android:hint="@string/enter_number"
                 android:inputType="textPersonName"
-                android:textSize="16sp" />
+                android:textSize="20sp" />
 
         </LinearLayout>
 
