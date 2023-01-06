@@ -9,6 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:backgroundTint="#37FFFFFF"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="?attr/listPreferredItemHeight">
@@ -52,22 +53,40 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName4"
+                android:id="@+id/mobileNo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints="phone"
+                android:digits="1234567890"
                 android:ems="10"
                 android:hint="@string/enter_number"
-                android:inputType="textPersonName"
+                android:inputType="number"
+                android:maxLength="10"
                 android:textSize="20sp" />
 
         </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="12dp" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/a_4_digit_otp_will_be_sent"
+            android:textColor="@color/material_dynamic_tertiary40"
+            android:textSize="16sp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="12dp" />
 
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/get_otp" />
+            android:text="@string/send_otp" />
 
 
     </LinearLayout>
