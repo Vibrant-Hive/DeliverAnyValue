@@ -1,7 +1,8 @@
-package com.deliver.any.value;
+package com.deliver.any.value.activity;
 
 import android.os.Bundle;
 
+import com.deliver.any.value.R;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;

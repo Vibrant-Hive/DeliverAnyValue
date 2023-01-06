@@ -1,4 +1,4 @@
-package com.deliver.any.value.constants;
+package com.deliver.any.value.constant;
 
 public class Constants {
 

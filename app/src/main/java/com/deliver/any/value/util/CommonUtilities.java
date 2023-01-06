@@ -3,7 +3,7 @@ package com.deliver.any.value.util;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.deliver.any.value.constants.Constants;
+import com.deliver.any.value.constant.Constants;
 
 public class CommonUtilities {
 
