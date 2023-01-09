@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/First2Fragment"
         android:name="com.deliver.any.value.fragment.SendOTPFragment"
-        android:label="@string/first_fragment_label"
+        android:label="@string/your_phone"
         tools:layout="@layout/fragment_get_otp">
 
         <action
@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/Second2Fragment"
         android:name="com.deliver.any.value.fragment.EnterOTPFragment"
-        android:label="@string/second_fragment_label"
+        android:label="@string/otp_verification"
         tools:layout="@layout/fragment_enter_otp">
 
         <action

@@ -11,17 +11,10 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="?attr/listPreferredItemHeight">
+        android:padding="?attr/listPreferredItemHeight"
+        tools:layout_editor_absoluteX="-16dp"
+        tools:layout_editor_absoluteY="0dp">
 
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/otp_verification"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            android:textStyle="bold" />
 
         <Space
             android:layout_width="match_parent"
@@ -32,7 +25,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/enter_the_otp_you_received_to"
-            android:textColor="@color/material_dynamic_neutral_variant30"
             android:textSize="16sp" />
 
         <LinearLayout
@@ -70,7 +62,8 @@
             android:inputType="number"
             android:maxLength="4"
             android:textIsSelectable="false"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <Space
             android:layout_width="match_parent"

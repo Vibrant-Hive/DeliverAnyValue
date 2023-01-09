@@ -15,15 +15,6 @@
         android:padding="?attr/listPreferredItemHeight">
 
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/your_phone"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
         <Space
             android:layout_width="match_parent"
             android:layout_height="70dp" />
@@ -75,7 +66,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/a_4_digit_otp_will_be_sent"
-            android:textColor="@color/material_dynamic_tertiary40"
             android:textSize="16sp" />
 
         <Space

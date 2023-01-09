@@ -1,6 +1,6 @@
 package com.deliver.any.value.fragment;
 
-import static com.deliver.any.value.constant.Constants.MOBILE_NUMBER;
+import static com.deliver.any.value.constant.Constants.PHONE;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,7 +14,6 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.deliver.any.value.R;
 import com.deliver.any.value.databinding.FragmentGetOtpBinding;
-import com.deliver.any.value.util.CommonUtilities;
 
 public class SendOTPFragment extends Fragment {
 
@@ -37,10 +36,10 @@ public class SendOTPFragment extends Fragment {
         binding.button.setOnClickListener(view1 -> {
             NavHostFragment.findNavController(SendOTPFragment.this)
                     .navigate(R.id.action_First2Fragment_to_Second2Fragment);
-            CommonUtilities.putPrefString(getContext(), MOBILE_NUMBER, ((EditText) view.findViewById(R.id.mobileNo)).getText().toString());
+            PHONE = ((EditText) view.findViewById(R.id.mobileNo)).getText().toString();
         });
 
-        ((EditText) view.findViewById(R.id.mobileNo)).setText(CommonUtilities.getPrefString(MOBILE_NUMBER));
+        ((EditText) view.findViewById(R.id.mobileNo)).setText(PHONE);
     }
 
     @Override
