@@ -1,4 +1,4 @@
-package com.deliver.any.value.activity;
+package com.deliver.any.value.activity.ui;
 
 import android.Manifest;
 import android.content.Context;
@@ -9,14 +9,18 @@ import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 
 import com.deliver.any.value.R;
-import com.deliver.any.value.databinding.ActivityAreaMapBinding;
+import com.deliver.any.value.activity.ServicesActivity;
+import com.deliver.any.value.databinding.FragmentAreaMapBinding;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -33,26 +37,25 @@ import com.google.android.gms.tasks.Task;
 
 import java.util.Objects;
 
-public class AreaMapActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class AreaMapFragment extends Fragment implements OnMapReadyCallback {
 
-    private ActivityAreaMapBinding binding;
+    private FragmentAreaMapBinding binding;
     Location currentLocation;
     FusedLocationProviderClient fusedLocationProviderClient;
     private static final int REQUEST_CODE = 101;
     Marker marker;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View onCreateView(
+            @NonNull LayoutInflater inflater, ViewGroup container,
+            Bundle savedInstanceState
+    ) {
 
-        binding = ActivityAreaMapBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+        binding = FragmentAreaMapBinding.inflate(inflater, container, false);
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireActivity().getApplicationContext());
         fetchLocation();
+        return binding.getRoot();
+
     }
 
     @Override
@@ -60,10 +63,10 @@ public class AreaMapActivity extends AppCompatActivity implements OnMapReadyCall
         locateMe(googleMap);
         locateLaundry(googleMap);
 
-        googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(getApplicationContext(), R.raw.style_json));
+        googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(requireActivity().getApplicationContext(), R.raw.style_json));
         googleMap.setOnMarkerClickListener(marker -> {
             if(marker.equals(this.marker)){
-                startActivity(new Intent(getApplicationContext(), ServicesActivity.class));
+                startActivity(new Intent(requireActivity().getApplicationContext(), ServicesActivity.class));
             }
             return true;
         });
@@ -71,13 +74,13 @@ public class AreaMapActivity extends AppCompatActivity implements OnMapReadyCall
 
     private void locateLaundry(GoogleMap googleMap) {
         LatLng vipLatLng = new LatLng(currentLocation.getLatitude() - 0.003, currentLocation.getLongitude() - 0.003);
-        MarkerOptions vipMarker = new MarkerOptions().position(vipLatLng).title("VIP Laundry").icon(bitmapFromVector(getApplicationContext(), R.drawable.outline_local_laundry_service_black_48));
+        MarkerOptions vipMarker = new MarkerOptions().position(vipLatLng).title("VIP Laundry").icon(bitmapFromVector(requireActivity().getApplicationContext(), R.drawable.outline_local_laundry_service_black_48));
         marker = googleMap.addMarker(vipMarker);
     }
 
     private void locateMe(GoogleMap googleMap) {
         LatLng latLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
-        MarkerOptions myMarker = new MarkerOptions().position(latLng).title("You").icon(bitmapFromVector(getApplicationContext(), R.drawable.outline_person_pin_circle_black_48));
+        MarkerOptions myMarker = new MarkerOptions().position(latLng).title("You").icon(bitmapFromVector(requireActivity().getApplicationContext(), R.drawable.outline_person_pin_circle_black_48));
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16));
         Marker myLoc = googleMap.addMarker(myMarker);
         Objects.requireNonNull(myLoc).showInfoWindow();
@@ -117,17 +120,17 @@ public class AreaMapActivity extends AppCompatActivity implements OnMapReadyCall
 
     private void fetchLocation() {
         if (ActivityCompat.checkSelfPermission(
-                this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE);
+                requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(requireActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE);
             return;
         }
         Task<Location> task = fusedLocationProviderClient.getLastLocation();
         task.addOnSuccessListener(location -> {
             if (location != null) {
                 currentLocation = location;
-                SupportMapFragment supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-                Objects.requireNonNull(supportMapFragment).getMapAsync(AreaMapActivity.this);
+                SupportMapFragment supportMapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
+                Objects.requireNonNull(supportMapFragment).getMapAsync(this);
             }
         });
     }

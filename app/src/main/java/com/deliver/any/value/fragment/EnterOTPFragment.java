@@ -11,10 +11,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
 
+import com.deliver.any.value.MainActivity;
 import com.deliver.any.value.R;
-import com.deliver.any.value.activity.AreaMapActivity;
 import com.deliver.any.value.databinding.FragmentEnterOtpBinding;
 
 public class EnterOTPFragment extends Fragment {
@@ -35,7 +34,7 @@ public class EnterOTPFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.buttonSecond.setOnClickListener(view1 -> startActivity(new Intent(this.getContext(), AreaMapActivity.class)));
+        binding.buttonSecond.setOnClickListener(view1 -> startActivity(new Intent(this.getContext(), MainActivity.class)));
 
         ((TextView) view.findViewById(R.id.mobileNumber)).setText(PHONE);
     }

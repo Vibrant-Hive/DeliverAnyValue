@@ -62,4 +62,8 @@
     <string name="serviceIcon">serviceIcon</string>
     <string name="service_1">Service 1</string>
     <string name="rs_100">Rs. 100</string>
+    <string name="map">Map</string>
+    <string name="cart">Cart</string>
+    <string name="orders">Orders</string>
+    <string name="rides">Rides</string>
 </resources>
