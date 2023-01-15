@@ -58,4 +58,8 @@
     <string name="title_activity_area_map">VIP\'s Near You</string>
     <string name="title_activity_services">VIP Laundry Service</string>
     <string name="action_settings">Settings</string>
+    <string name="addToCart">addToCart</string>
+    <string name="serviceIcon">serviceIcon</string>
+    <string name="service_1">Service 1</string>
+    <string name="rs_100">Rs. 100</string>
 </resources>
